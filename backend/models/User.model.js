@@ -8,9 +8,13 @@ const Userschema = mongoose.Schema({
     type: String,
     required: true,
   },
-  profilePicture: {
+  password:{
     type: String,
     required: true,
+  },
+  profilePicture: {
+    type: String,
+    required:false,
   },
   enrolledCourses: [
     {
@@ -32,4 +36,4 @@ const Userschema = mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("User", Userschema);
+export default mongoose.model("User", Userschema);

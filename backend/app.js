@@ -1,4 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config';
 import express from "express";
 import authRoute from "./routes/authentication.route.js";
 import courseRoute from "./routes/course.route.js";
@@ -23,4 +23,4 @@ app.get("/", (req, res) => {
   res.send("hi");
 });
 
-app.listen(port, () => {});
+app.listen(port, () => {console.log(`listening to ${port}`)});
