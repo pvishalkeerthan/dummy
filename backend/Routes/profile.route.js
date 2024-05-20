@@ -1,16 +1,21 @@
-const express=require("express");
-const app=express();
-const route=express.Router();
+import express from "express";
+const app = express();
+const route = express.Router();
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
-const {getProfile,editProfile,getProfileCourses,getProfileFavorites,getProfileCompleted}=require("../Controllers.controller");
-
+import {
+  getProfile,
+  editProfile,
+  getProfileCourses,
+  getProfileFavorites,
+  getProfileCompleted,
+} from "../controllers/profile.controller.js";
 
 //User profile endpoints
-route.get("",getProfile);
-route.put("/edit",editProfile);
-route.get("/enrolled",getProfileCourses);
-route.get("/favorites",getProfileFavorites);
-route.get("/completed",getProfileCompleted);
-module.exports=route;
+route.get("", getProfile);
+route.put("/edit", editProfile);
+route.get("/enrolled", getProfileCourses);
+route.get("/favorites", getProfileFavorites);
+route.get("/completed", getProfileCompleted);
+export default route;

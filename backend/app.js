@@ -1,21 +1,20 @@
-require("dotenv").config();
-const express=require("express");
-const port=process.env.PORT;
-const app=express();
+import "dotenv/config";
+import express from "express";
+import authRoute from "./routes/authentication.route.js";
+import courseRoute from "./routes/course.route.js";
+import enrollRoute from "./routes/enrollment.route.js";
+import profileRoute from "./routes/profile.route.js";
+import reviewRoute from "./routes/review.route.js";
+
+const port = process.env.PORT;
+const app = express();
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
-let authRoute=require("./Routes/authentication.route");
-let courseRoute=require("./Routes/course.route");
-let enrollRoute=require("./Routes/enrollment.route");
-let profileRoute=require("./Routes/profile.route");
-let reviewRoute=require("./Routes/review.route");
+app.use("/api/auth", authRoute);
+app.use("/api/courses", courseRoute);
+app.use("/api/profile", profileRoute);
+app.use("/api/enrollments", enrollRoute);
+app.use("/api/reviews", reviewRoute);
 
-
-app.use("/api/auth",authRoute);
-app.use("/api/courses",courseRoute);
-app.use("/api/profile",profileRoute);
-app.use("/api/enrollments",enrollRoute);
-app.use("/api/reviews",reviewRoute);
-
-app.listen(port,()=>)
+app.listen(port, () => {});
