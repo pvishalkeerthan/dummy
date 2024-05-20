@@ -1,29 +1,35 @@
-const mongoose=require('mongoose')
+import mongoose from "mongoose";
 const Userschema = mongoose.Schema({
-    username: {
-        type: String,
-        required: true
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  profilePicture: {
+    type: String,
+    required: true,
+  },
+  enrolledCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
     },
-    email: {
-        type: String,
-        required: true
+  ],
+  favouriteCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
     },
-    profilePicture: {
-        type: String,
-        required: true
+  ],
+  completedCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
     },
-    enrolledCourses: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course'
-    }],
-    favouriteCourses: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course'
-    }],
-    completedCourses: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course'
-    }]
+  ],
 });
 
-module.exports=mongoose.model('User',Userschema);
+module.exports = mongoose.model("User", Userschema);
